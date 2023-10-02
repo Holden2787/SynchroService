@@ -1,9 +1,0 @@
-﻿ID;Source;RemUser;RemPass;Dest;DestRemUser;DestRemPass;FilterMask;TimerTick;ReplicateSubdirectories;DeleteFilesInSource;ArchFileInSource;
-;ELIS_in;\\df.ak.tn.corp\S\SHR\KHPD_ELIS\IN;;;\\dc-prod.tn.corp\КИС\KHPD_TEST\KHPD_ELIS\IN;;;*;1;True;False;False
-;ELIS_out;\\dc-prod.tn.corp\КИС\KHPD_TEST\KHPD_ELIS\OUT;;;\\df.ak.tn.corp\S\SHR\KHPD_ELIS\OUT;;;*;1;True;True;False
-;SGPP;\\dc-prod.tn.corp\КИС\KHPD_TEST\KHPD_SGPP;;;\\dc-prod.tn.corp\КИС\KHPD_SGPP;;;*;1;True;True;False
-;SAUSIB;\\dc-prod.tn.corp\КИС\KHPD_TEST\KHPD_SFSIB\OUT;;;\\df.ak.tn.corp\S\SHR\KHPD_SAUSIB;;;*;1;FALSE;;2
-;TEST;C:\Users\dbudko\Desktop\ELIS;;;C:\Users\dbudko\Desktop\ELIS_WRITE;;;*;1;TRUE;0;
-TEST1;\\vdc01-peintktn3\ARMT\ARMT_Data\SSFR;;;C:\Users\dbudko\Desktop\ELIS_WRITE\SSFR;;;*;1;TRUE;0;
-
-
