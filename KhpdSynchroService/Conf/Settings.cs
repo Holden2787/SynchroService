@@ -8,7 +8,11 @@ namespace KhpdSynchroService.Conf
     /// </summary>
     [Serializable]
     public class Settings
-    {
+    {        
+        /// <summary>
+        /// Для тестирования функционала исключаем БД
+        /// </summary>
+        public bool WithoutBD;
         /// <summary>
         /// Имя службы
         /// </summary>

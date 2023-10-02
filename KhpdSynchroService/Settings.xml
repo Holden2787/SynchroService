@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<!--Имя службы-->
+  <!--Для тестирования функционала исключаем БД-->
+  <WithoutBD>true</WithoutBD>
+  <!--Имя службы-->
 	<ServiceName>KhpdSynchroService</ServiceName>
 	<!--Отображаемое имя службы-->
 	<DisplayName>Служба синхронизации файловых ресурсов</DisplayName>
@@ -30,10 +32,10 @@
 	<!-- Конфигурация передач файлов -->
 	<TransferDirections>
 		<TransferDirection isOn="true" id="SGPP" intervalMin="1">
-			<Source>\\_\КИС\KHPD_TEST\KHPD_SFSIB\OUT</Source>
+			<Source>C:\Users\dbudko\Desktop\Out</Source>
 			<RemUser></RemUser>
 			<RemPass></RemPass>
-			<Dest>\\_\КИС\KHPD_SGPP\OUT </Dest>
+			<Dest>C:\Users\dbudko\Desktop\In</Dest>
 			<DestRemUser></DestRemUser>
 			<DestRemPass></DestRemPass>
 			<FilterMask>*</FilterMask>

@@ -469,16 +469,19 @@ namespace KhpdSynchroService
             //List<FileGroup> groups = FileGroup.CreateList(FP); //Не понятно что это
 
             //Проверяем какие фалы необходимо скопировать.
-            //DBCopyFile.CheckFiles(files);
             DBCopyFile dbchecker = new DBCopyFile();
             //проверяем устанолено ли соединение с БД
-            if(dbchecker.isErrConnect())
-                return -99;
 
-            var err = dbchecker.SelectFiles(files);
+            if (!Configuration.Settings.WithoutBD)
+            {
+                if (dbchecker.isErrConnect())
+                    return -99;
 
-            if(err)
-                return -99;
+                var err = dbchecker.SelectFiles(files);
+
+                if (err)
+                    return -99;
+            }
 
             files.OrderBy(f => f.SubDirs.Count);
 

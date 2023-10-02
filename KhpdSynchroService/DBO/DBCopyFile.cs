@@ -38,7 +38,8 @@ namespace KhpdSynchroService.DBO
         public DBCopyFile()
         {
             //Проверяем существует ли необходимая таблица. Создаем если её нет.
-            Err = !DBPrepare.CheckDB();
+            if(!Configuration.Settings.WithoutBD)
+                Err = !DBPrepare.CheckDB();
             TimeoutQuery = Configuration.Settings.TimeoutQuery;
             SqlTableToInsert = Configuration.Settings.SqlTableToInsert;
             SqlTypeTableCreate = Configuration.Settings.SqlTypeTableCreate;
