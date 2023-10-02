@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--Имя службы-->
+	<ServiceName>KhpdSynchroService</ServiceName>
+	<!--Отображаемое имя службы-->
+	<DisplayName>Служба синхронизации файловых ресурсов</DisplayName>
+	<!--Описание службы-->
+	<ServiceDescription>Служба синхронизации файловых ресурсов</ServiceDescription>
+	
+	<!--Настройки для Zabbix: имя сервера, передающего данные для мониторинга-->
+	<ZabbixServer>10.7.142.202</ZabbixServer>
+	<ZabbixPort>10051</ZabbixPort>
+	<ZabbixHost>VDC01-PEINTKPN4</ZabbixHost>
+
+	<!--Строка подключения к БД-->
+	<SQLConnString>Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=KHPD;Data Source=CDC01-PISQLKP01.dc-prod.tn.corp</SQLConnString>
+	<!--Имя таблицы для хранений истории в MS SQL-->
+	<SqlTableToInsert>SSFR_Hist</SqlTableToInsert>
+	<!--Имя созаваемого типа для загрузки истории в MS SQL-->
+	<SqlTypeTableCreate>SSFR_Type</SqlTypeTableCreate>
+	<!--Timeout доступа к файловому ресурсу(сек)-->
+	<ConnectionTime>60</ConnectionTime>
+	<!--Timeout SQL запроса(сек)-->
+	<TimeoutQuery>120</TimeoutQuery>
+	<!--Максимальный размер файлов в архиве хранящиеся на источнике (Гб)-->
+	<MaxSizeFilesInArchive>5</MaxSizeFilesInArchive>
+	<!--Максимальный время жизни файлов в архиве хранящиеся на источнике (дней)-->
+	<MaxLifeTimeFilesInDay>60</MaxLifeTimeFilesInDay>
+	
+	<!-- Конфигурация передач файлов -->
+	<TransferDirections>
+		<TransferDirection isOn="true" id="ELIS_in" intervalMin="1">
+			<Source>\\df.ak.tn.corp\S\SHR\KHPD_ELIS\IN</Source>
+			<RemUser></RemUser>
+			<RemPass></RemPass>
+			<Dest>\\dc-prod.tn.corp\КИС\KHPD_PROD\KHPD_ELIS\IN</Dest>
+			<DestRemUser></DestRemUser>
+			<DestRemPass></DestRemPass>
+			<FilterMask>*</FilterMask>
+			<ReplicateSubdirectories>true</ReplicateSubdirectories>
+			<DeleteFilesInSource isOn="false" afterDay="0" />
+			<ArchFileInSource isOn="false" afterDay="0" />
+		</TransferDirection>	
+		<TransferDirection isOn="true" id="ELIS_out" intervalMin="1">
+			<Source>\\dc-prod.tn.corp\КИС\KHPD_PROD\KHPD_ELIS\OUT</Source>
+			<RemUser></RemUser>
+			<RemPass></RemPass>
+			<Dest>\\df.ak.tn.corp\S\SHR\KHPD_ELIS\OUT</Dest>
+			<DestRemUser></DestRemUser>
+			<DestRemPass></DestRemPass>
+			<FilterMask>*</FilterMask>
+			<ReplicateSubdirectories>true</ReplicateSubdirectories>
+			<DeleteFilesInSource isOn="true" afterDay="0" />
+			<ArchFileInSource isOn="true" afterDay="0" />
+		</TransferDirection>
+		<TransferDirection isOn="true" id="SGPP" intervalMin="1">
+			<Source>\\dc-prod.tn.corp\КИС\KHPD_PROD\KHPD_SGPP\OUT</Source>
+			<RemUser></RemUser>
+			<RemPass></RemPass>
+			<Dest>\\dc-prod.tn.corp\КИС\KHPD_SGPP\OUT</Dest> 
+			<DestRemUser></DestRemUser>
+			<DestRemPass></DestRemPass>
+			<FilterMask>*</FilterMask>
+			<ReplicateSubdirectories>true</ReplicateSubdirectories>
+			<DeleteFilesInSource isOn="true" afterDay="0" />
+			<ArchFileInSource isOn="true" afterDay="0" />
+		</TransferDirection>
+		<TransferDirection isOn="true" id="SAUSIB" intervalMin="1">
+			<Source>\\dc-prod.tn.corp\КИС\KHPD_PROD\KHPD_SFSIB\OUT</Source>
+			<RemUser></RemUser>
+			<RemPass></RemPass>
+			<Dest>\\df.ak.tn.corp\S\SHR\KHPD_SAUSIB</Dest>
+			<DestRemUser></DestRemUser>
+			<DestRemPass></DestRemPass>
+			<FilterMask>*</FilterMask>
+			<ReplicateSubdirectories>true</ReplicateSubdirectories>
+			<DeleteFilesInSource isOn="true" afterDay="1" />
+			<ArchFileInSource isOn="true" afterDay="1" />
+		</TransferDirection>
+	</TransferDirections>
+	
+	<!--Маппинг имён метрик мониторинга-->
+	<MonitoringSettings>
+		<!--Доступность входящего ФР-->
+		<ConnectionStateSource>SSFR.ConnectionStateSource</ConnectionStateSource>
+		<!--Доступность исходящего ФР-->
+		<ConnectionStateDest>SSFR.ConnectionStateDest</ConnectionStateDest>		
+		<!--Длительность обработки файлов -->
+		<ProcessingTime>SSFR.ProcessingTime</ProcessingTime>		
+		<!--Время посл. файла в источнике-->
+		<TimeStampFileSource>SSFR.TimeStampFileSource</TimeStampFileSource>		
+		<!--Время посл. файла в приемнике-->
+		<TimeStampFileDest>SSFR.TimeStampFileDest</TimeStampFileDest>		
+		<!--Кол-во файлов в источнике-->
+		<CntFileSource>SSFR.CntFileSource</CntFileSource>		
+		<!--Кол-во обработанных файлов при передаче-->
+		<CntFileProcessed>SSFR.CntFileProcessed</CntFileProcessed>		
+		<!--Сигнал жизни службы-->
+		<LiveCounter>SSFR.LiveCounter</LiveCounter>
+		<!--Размер директории источника-->
+		<SourceDirectorySize>SSFR.SourceDirectorySize</SourceDirectorySize>
+		<!--Размер директории приёмника-->
+		<DestDirectorySize>SSFR.DestDirectorySize</DestDirectorySize>
+	</MonitoringSettings>	
+</Settings>
+	

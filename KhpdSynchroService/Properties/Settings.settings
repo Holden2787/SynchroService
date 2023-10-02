@@ -1,0 +1,61 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KhpdSynchroService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CommandAfterOutput" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DisconnectError" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Verbose" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ZabbixServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CDC01-PEINTKT01</Value>
+    </Setting>
+    <Setting Name="ZabbixUlr" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">172.24.5.65</Value>
+    </Setting>
+    <Setting Name="ZabbixPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10051</Value>
+    </Setting>
+    <Setting Name="SQLConnStr" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=cdc01-pisqlkt01;Initial Catalog=Khpd;User ID=sa;Password=P@ssw0rd</Value>
+    </Setting>
+    <Setting Name="SqlTableToInsert" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SSFR_Hist</Value>
+    </Setting>
+    <Setting Name="SqlTypeTableCreate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SSFR_Type</Value>
+    </Setting>
+    <Setting Name="Configuration" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">
+          {
+          CheckPathes : [
+          { Source : "D:\\testSynch\\1" , RemUser : "" , RemPass : "" , Dest : "D:\\testSynch\\2" , DestRemUser : "" , DestRemPass : "" ,
+          FilterMask : "*" ,
+          Metric : "SSFR_ARMT_DIR_Available" ,
+          TimerTick : 2 ,
+          ReplicateSubdirectories : true ,
+          DeleteFilesInSource : false ,
+          CommandAfter : "" } ]
+          }
+        </Value>
+    </Setting>
+    <Setting Name="Metric" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">
+          {
+          ConnectionStateSource: "ConnectionStateSource",
+          ConnectionStateDest :"ConnectionStateDest",
+          ProcessingTime : "ProcessingTime",
+          TimeStampFileSource : "TimeStampFileSource",
+          TimeStampFileDest : "TimeStampFileDest",
+          CntFileSource : "CntFileSource",
+          CntFileProcessed : "CntFileProcessed",
+          LiveCounter : "LiveCounter"
+          }
+        </Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
